@@ -2860,3 +2860,5 @@ from random import randint
 # print(re.sub(reg, '!', s, 1))  # поиск и замена
 
 # print(re.findall(reg, s))
+
+print('Hello')
