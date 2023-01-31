@@ -2837,7 +2837,7 @@ from random import randint
 # Регулярные выражения
 # см. папка 17 "комбинации"
 
-# import re
+import re
 #
 # print(dir(re))
 
@@ -2861,4 +2861,106 @@ from random import randint
 
 # print(re.findall(reg, s))
 
-print('Hello')
+# s = 'Я ищу совпадения в 2023 году. И я их найду в 2 счёта. 9812. [Hello]'
+#
+# # reg = r'[а-яА-ЯёЁ.\[\]]'
+# # reg = r'[A-z]'
+# reg = r'[^0-9]'  # Все, кроме указанного
+#
+# print(re.findall(reg, s))
+# print(ord('Я'))
+# print(ord('а'))
+
+# s1 = 'Час в 24-часовом формате от 00 до 23. 2021-06-15T21:45. Минуты в диапазоне 2021-06-15T201:45'
+# r1 = '[0-2][0-9]:[0-5][0-9]'
+# print(re.findall(r1, s1))
+
+# s = 'Я ищу совпадения в 2023 году. И я их найду в 2 счёта. 9812. [Hello]'
+#
+# reg = r'20*'
+# print(re.findall(reg, s))
+#
+# d = 'Цифры 7, +17, -42, 0013, 0.3'
+# print(re.findall(r'[+-]?[\d].+', d))
+
+# d = '05-03-1985'  # Дата рождения
+# print('Дата рождения:', re.sub('#.*', '', d))
+# print('Дата рождения:', re.sub('[#.]*-', '.', d))
+# print('Дата рождения:', re.sub('-', '.', re.sub('#.*', '', d)))  # Вложенный шаблоны
+
+# d = 'author=Пушкин А.С.; title = Евгений Онегин; price =200; year= 1831'
+# r1 = r'\w+\s*=\s*\w+\s*[\w.]*'
+# r1 = r'\w+\s*=\s*[^;]+'  # запись короче и понятнее
+# print(re.findall(r1, d))
+
+# s1 = '12 сентября 2005 года 586456'
+# r1 = r'\d{2,4}'
+# print(re.findall(r1, s1))
+
+s = 'Я ищу совпадения в 2023 году. И я их найду в 2 счёта. 9812.'
+
+# reg = r'^\w+\s\w+'
+# reg = r'\w+\.$'
+# print(re.findall(reg, s))
+
+# print(re.findall(r'\w+', '12 + й', flags=re.ASCII))
+
+# text = 'Hello, world'
+# print(re.findall(r'\w+', text, re.DEBUG))
+
+# reg = 'я'
+# print(re.findall(reg, s, re.IGNORECASE))
+
+# text = """
+# one
+# two
+# """
+#
+# print(re.findall(r'one.\w+', text))
+# print(re.findall(r'one$', text, re.MULTILINE))
+# print(re.findall(r'one.\w+', text, re.DOTALL))
+
+# print(re.finditer(r'[\w-]+@[\w-]+', 'test@mail.ru'))
+
+# text = """Python
+# python
+# PYTHON
+# """
+# reg = '(?im)^python'
+# print(re.findall(reg, text))
+
+
+# def validate_name(name):
+#     # return re.search(r'^[\w-]{3,16}$', name).group
+#     return re.findall(r'^[\w-]{3,16}$', name)
+#
+#
+# print(validate_name('Python_master'))
+# print(validate_name('Pyt@'))
+
+# s1 = '123456@i.ru, 123_456@ru.name.name, login@i.ru, логин-1@i.ru, login.3@i.ru, 1login@re.name.ru'
+# # reg = r"[\w.-]+@\w*\.?\w*\.?\w*"
+# reg = r"[\w.-]+@[\w.-]+[a-z]{2,3}"
+# print(re.findall(reg, s1))
+
+# text = '<body>Пример жадного/максимального соответствия регулярного выражения</body>'
+# print(re.findall('<.*>', text))
+# print(re.findall('<.*?>', text))  # *?, +?, ?? - ленивое/минимальное соответствие
+# # {m,n}?, {,n}?, {m,}?
+
+# t = "<p>Избражение <img src='bg.jpg'> - фон страницы></p>"
+# # reg = r'<img.*?>'
+# reg = r'<img\s+[^>]*?src\s*=\s*[^>]+>'
+# print(re.findall(reg, t)[0])
+
+# t = 'Петя, Вася и Лена отлично учатся'
+# reg = r'Петя|Лена'
+# print(re.findall(reg, t))
+
+t = 'int = 4, float = 4.0, double = 8.0f'
+# reg = r'\w+\s*=\s*\d+[\?w.]*'
+reg = r'(?:int|double)\s*=\s*\d+[\w.]*'
+print(re.findall(reg, t))
+
+# (?: ) - не сохраняющие скобки, а группирующие
+
