@@ -1,0 +1,2 @@
+This is res_1.txt content:
+Each lesson Set has at least 3-4 lesson files.
