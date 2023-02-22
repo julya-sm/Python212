@@ -2839,75 +2839,69 @@ from random import randint
 
 # import re
 #
-# print(dir(re))
-
-# s = 'Я ищу совпадения в 2023 году. И я их найду в два счёта. 9812'
-# reg = r'2[0-9][0-9][0-9]'
-# print(re.findall(reg, s))  # возвращает список с найденными совпадениями
+# s = "Я ищу совпадения в 2023 году. И я их найде в 2 счёта. 98_12."
+# # reg = r'\.'
+# # print(re.findall(reg, s))  # возвращает список, содержащий все совпадения с заданным шаблоном
+# #
+# # print(re.search(reg, s))  # возвращает данные по соответствию первого совпадения с шаблоном
+# # # print(re.search(reg, s).span())
+# # # print(re.search(reg, s).start())
+# # # print(re.search(reg, s).end())
+# # # print(re.search(reg, s).group())
+# #
+# # print(re.match(reg, s))  # поиск по заданному шаблону в начале строки
 #
-# print(re.search(reg, s))  # возвращает данные по 1 совпадению с шаблоном.
-# span=(6, 16) показывает начальный и конечный индекс шаблона
-
-# print(re.search(reg, s).span())
-# print(re.search(reg, s).start())
-# print(re.search(reg, s).end())
-# print(re.search(reg, s).group())
-
-# print(re.match(reg, s))  # поиск по шаблону в начале строки
-
-# print(re.split(reg, s, 1))  # разбивает строку на список подстрок
-
-# print(re.sub(reg, '!', s, 1))  # поиск и замена
-
+# # print(re.split(reg, s, 1))  # разбивает строку на список подстрок
+# #
+# # print(re.sub(reg, "!", s, 1))  # поиск и замена
+# reg = r'[^0-9]'
 # print(re.findall(reg, s))
+# print(ord("Я"))
+# print(ord("а"))
 
-# s = 'Я ищу совпадения в 2023 году. И я их найду в 2 счёта. 9812. [Hello]'
-#
-# # reg = r'[а-яА-ЯёЁ.\[\]]'
-# # reg = r'[A-z]'
-# reg = r'[^0-9]'  # Все, кроме указанного
-#
-# print(re.findall(reg, s))
-# print(ord('Я'))
-# print(ord('а'))
-
-# s1 = 'Час в 24-часовом формате от 00 до 23. 2021-06-15T21:45. Минуты в диапазоне 2021-06-15T201:45'
+# s1 = "Час в 24-часовом формате от 00 до 23. 2021-06-15T21:59. Минуты, в диапазоне от 00 до 59. 2021-06-15T01:09"
 # r1 = '[0-2][0-9]:[0-5][0-9]'
 # print(re.findall(r1, s1))
 
-# s = 'Я ищу совпадения в 2023 году. И я их найду в 2 счёта. 9812. [Hello]'
-#
 # reg = r'20*'
 # print(re.findall(reg, s))
+
+# d = "Цифры: 7, +17, -42, 0.013, 0.3"
+# print(re.findall(r'[+-]?[\d.]+', d))
+
+
+# d = "05-03-1987 # Дата рождения"
 #
-# d = 'Цифры 7, +17, -42, 0013, 0.3'
-# print(re.findall(r'[+-]?[\d].+', d))
+# print("Дата рождения:", re.sub('#.*', '', d))
 
-# d = '05-03-1985'  # Дата рождения
-# print('Дата рождения:', re.sub('#.*', '', d))
-# print('Дата рождения:', re.sub('[#.]*-', '.', d))
-# print('Дата рождения:', re.sub('-', '.', re.sub('#.*', '', d)))  # Вложенный шаблоны
 
-# d = 'author=Пушкин А.С.; title = Евгений Онегин; price =200; year= 1831'
-# r1 = r'\w+\s*=\s*\w+\s*[\w.]*'
-# r1 = r'\w+\s*=\s*[^;]+'  # запись короче и понятнее
+# Дата рождения: 05.03.1987
+
+
+# print("Дата рождения:", re.sub('-', '.', re.sub('#.*', '', d)))  # 05-03-1987
+
+# d = "author=Пушкин А.С.; title  = Евгений Онегин; price =200; year= 1831"
+# # r1 = r'\w+\s*=\s*\w+\s*[\w.]*'
+# r1 = r'\w+\s*=[^;]+'
 # print(re.findall(r1, d))
 
-# s1 = '12 сентября 2005 года 586456'
-# r1 = r'\d{2,4}'
+# s1 = "12 сентября 2023 года 568561"
+# r1 = r"\d{2,4}"
 # print(re.findall(r1, s1))
 
-# s = 'Я ищу совпадения в 2023 году. И я их найду в 2 счёта. 9812.'
 
-# reg = r'^\w+\s\w+'
+# s1 = "+7 499 456-45-78, +74994564578, 7 (499) 456 45 78, 74994564578"
+# r1 = r"\+?7\d{10}"
+# print(re.findall(r1, s1))
+
 # reg = r'\w+\.$'
 # print(re.findall(reg, s))
 
+# print(re.findall(r'\w+', '12 + й'))
 # print(re.findall(r'\w+', '12 + й', flags=re.ASCII))
 
-# text = 'Hello, world'
-# print(re.findall(r'\w+', text, re.DEBUG))
-
+# text = "hello world"
+# print(re.findall(r'\w\+', text, re.DEBUG))
 # reg = 'я'
 # print(re.findall(reg, s, re.IGNORECASE))
 
@@ -2915,154 +2909,1314 @@ from random import randint
 # one
 # two
 # """
-#
-# print(re.findall(r'one.\w+', text))
-# print(re.findall(r'one$', text, re.MULTILINE))
-# print(re.findall(r'one.\w+', text, re.DOTALL))
+# print(re.findall(r"one.\w+", text))
+# # print(re.findall(r"one$", text))
+# # print(re.findall(r"one$", text, re.MULTILINE))
+# print(re.findall(r"one.\w+", text, re.DOTALL))
 
-# print(re.finditer(r'[\w-]+@[\w-]+', 'test@mail.ru'))
+# print(re.findall(r"""
+# [\w-]+  # part1
+# @       # @
+# [\w-]+  # part2
+# """, "test@mail.ru", re.VERBOSE))
 
-# text = """Python
-# python
+# text = """Python,
+# python,
 # PYTHON
 # """
-# reg = '(?im)^python'
+# reg = "(?im)^python"
 # print(re.findall(reg, text))
 
 
 # def validate_name(name):
-#     # return re.search(r'^[\w-]{3,16}$', name).group
-#     return re.findall(r'^[\w-]{3,16}$', name)
+#     # return re.search(r'^[\w-]{3,16}$', name).group()
+#     return re.findall(r'^[\w-]{3,16}$', name)[0]
 #
 #
 # print(validate_name('Python_master'))
-# print(validate_name('Pyt@'))
+# print(validate_name('Pyt'))
 
-# s1 = '123456@i.ru, 123_456@ru.name.name, login@i.ru, логин-1@i.ru, login.3@i.ru, 1login@re.name.ru'
-# # reg = r"[\w.-]+@\w*\.?\w*\.?\w*"
-# reg = r"[\w.-]+@[\w.-]+[a-z]{2,3}"
+# s1 = "123456@i.ru, 123_456@ru.name.ru, login@i.ru, логин-1@i.ru, login.3@i.ru, login.3-67@i.ru, 1login@ru.name.ru"
+# # reg = r'[\w.-]+@\w*\.?\w*\.?\w*'
+# reg = r'[\w.-]+@[\w.-]+[a-z]{2,3}'
 # print(re.findall(reg, s1))
 
-# text = '<body>Пример жадного/максимального соответствия регулярного выражения</body>'
-# print(re.findall('<.*>', text))
-# print(re.findall('<.*?>', text))  # *?, +?, ?? - ленивое/минимальное соответствие
+# text = "<body>Пример жадного соответствия регулярных выражений</body>"
+# print(re.findall('<.*?>', text))
+#
+# # *?, +?, ??  - "ленивое соответствие" - захватывает минимально возможное число символов
 # # {m,n}?, {,n}?, {m,}?
+#
+# s1 = "12 сентября 2023 года 568561"
+# r1 = r"\d{3,}?"
+# print(re.findall(r1, s1))
 
-# t = "<p>Избражение <img src='bg.jpg'> - фон страницы></p>"
+# t = "<p>Изображение <img alt='картинка' src='bg.jpg'> - фон страницы</p>"
 # # reg = r'<img.*?>'
 # reg = r'<img\s+[^>]*?src\s*=\s*[^>]+>'
-# print(re.findall(reg, t)[0])
-
-# t = 'Петя, Вася и Лена отлично учатся'
-# reg = r'Петя|Лена'
 # print(re.findall(reg, t))
 
-# t = 'int = 4, float = 4.0, double = 8.0f'
-# # reg = r'\w+\s*=\s*\d+[\?w.]*'
-# reg = r'(?:int|double)\s*=\s*\d+[\w.]*'
+
+# t = "Ольга и Виталий отлично учатся"
+# reg = "Петр|Ольга|Виталий"
 # print(re.findall(reg, t))
 
-# (?: ) - не сохраняющие скобки, а группирующие
+# t = "int = 4, float = 4.0, double = 8.0f"
+# reg = r"(?:int|double)\s*=\s*\d+[\w.]*"
+# print(re.findall(reg, t))
 
-import re
 
-# # s = '127.0.0.1'  # 192.168.255.255
-# s = '192.168.255.255'
-# # reg = r'\d{1,3}.\d{1,3}.\d{1,3}'
+# (?:  ) - скобки не сохраняющие (группирующие)
+
+# def validate_name(name):
+#     return re.findall(r'^[a-z\d@_-]{6,18}$', name, re.IGNORECASE)
+#
+#
+# print(validate_name('_my-p@sswOrd'))
+
+
+# s1 = '127.0.0.1'  # 192.168.255.255
+# # reg = r'\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}'
 # reg = r'(?:\d{1,3}.){3}\d{1,3}'
-# print(re.findall(reg, s))
-
-# s1 = 'Word2016, PS6, AI5'
-# # reg = r'([A-z]+)(\d)'
-# # reg = r'([A-z]+)\d'
-# # reg = r'[A-z]+(\d)'
-# reg = r'(([A-z]+)(\d))'
 # print(re.findall(reg, s1))
 
-# s1 = '5 + 7*2 -4'
-# # reg = r'\s*[+*-]\s*'  # удаляются символы-разделители
-# reg = r'\s*([+*-])\s*'  # возвращаются символы-разделители
+
+# s1 = "Word2016, PS6, AI5"
+# reg = r'(([a-z]+)(\d+))'
+# print(re.findall(reg, s1, re.IGNORECASE))
+# print(ord('Я'))
+# print(ord('а'))
+
+
+# s1 = "5 + 7*2 -4"
+# reg = r'\s*([+*-])\s*'
 # print(re.split(reg, s1))
 
+
 # a = '28-08-2021'
-# reg = r'(0[1-9]|[12][0-9]|3[0-1])-(0[0-9]|1[0-2])-(19[0-9]|20[0-9][0-9])'
+# reg = r'^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(19[0-9][0-9]|20[0-9][0-9])$'
 # print(re.findall(reg, a))
 # print(re.search(reg, a))
 
-# s = 'Я ищу совпадения в 2023 году. И я их найду в два счёта. 9812'
-# reg = r'([0-9]+)\s\(D+)'
-# print(re.search(reg, s).group())
+
+# s = "Я ищу совпадения в 2023 году. И я их найде в 2 счёта."
+# reg = r'([0-9]+)\s(\D+)'
 # print(re.findall(reg, s)[0])
+# print(re.search(reg, s).group())
 # m = re.search(reg, s)
 # print(m[0])
 # print(m[1])
 # print(m[2])
 
+
 # text = """
-# Омск
-# Сочи
+# Самара
 # Москва
+# Тверь
 # Уфа
 # Казань
 # """
-
 # count = 0
 #
 #
 # def repl_find(m):
 #     global count
 #     count += 1
-#     return f'<option value ="{count}">{m.group(1)}</option>\n'
+#     return f"<option value='{count}'>{m.group(1)}</option>\n"
 #
 #
+# print(re.findall(r'\s*(\w+)\s*', text))
 # print(re.sub(r'\s*(\w+)\s*', repl_find, text))
 
-# s = "<p>Изображение <img src='bg.jpg'> - фон страницы</p>"
-# reg = r'<img\s+[^>]*src=(["\'])(.+)\1>'
+# s = "<p>Изображения <img src=\"bg.jpg\"> - фон страницы</p>"
+# reg = r"<img\s+[^>]*src=(['\"])(.+)\1>"
 # print(re.findall(reg, s)[0][1])
 
-# s = "<p>Изображение <img src='bg.jpg'> - фон страницы</p>"
-# reg = r'<img\s+[^>]*src=(?P<q>["\'])(.+)\1(?P=q)>'
+# s = "<p>Изображения <img src=\"bg.jpg\"> - фон страницы</p>"
+# reg = r"<img\s+[^>]*src=(?P<q>['\"])(.+)(?P=q)>"
 # print(re.findall(reg, s))
-#
-# # (?P<name>) (?P=name)
+
+# (?P<name>) (?P=name)
+
+# s = "Самолет прилетает 10/23/2023. Будем вас рады видеть после 10/24/2023."  # 24.10.2023
+# reg = r"(\d{2})/(\d{2})/(\d{4})"
+# print(re.sub(reg, r"\2.\1.\3", s))
+
+# s = "yandex.com and yandex.ru"
+# reg = r'(([a-z0-9\-]{2,}\.)+[a-z]{2,4})'
+# print(re.sub(reg, r"http://\1", s))
 
 # Рекурсия
 
-
 # def elevator(n):
 #     if n == 0:
-#         print('Вы в подвале')
+#         print("Вы в подвале")
 #         return
-#     print('->', n)
+#     print("->", n)
 #     elevator(n - 1)  # 5 4 3 2 1
-#     print(n, end=' ')
+#     print(n, end=" ")
 #
 #
-# n1 = int(input('На каком вы этаже: '))  # 5
+# n1 = int(input("На каком вы этаже: "))  # 5
 # elevator(n1)
 
 
 # def sum_list(lst):
+#     res = 0
+#     for i in lst:
+#         res += i
+#     return res
+#
+#
+# print(sum_list([1, 3, 5, 7, 9]))  # 25
+
+
+# def sum_list(lst):  # [9]
 #     if len(lst) == 1:
-#         print(lst, '=> lst[0]:', lst[0])
-#         return lst[0]
+#         print(lst, "=> lst[0]:", lst[0])
+#         return lst[0]  # 9
 #     else:
-#         print(lst, '=> lst[0]:', lst[0])
-#         return lst[0] + sum_list(lst[1:])
+#         print(lst, "=> lst[0]:", lst[0])
+#         return lst[0] + sum_list(lst[1:])  # 1 + 3 + 5 + 7 +
 #
 #
-# print(sum_list([1, 3, 5, 7, 9]))
+# print(sum_list([1, 3, 5, 7, 9]))  # 25
 
 
 # def to_str(n, base):
-#     convert = '0123456789ABCDEF'
-#     if n < base:
-#         return convert[n]  # 7
+#     convert = "0123456789ABCDEF"
+#     if n < 0:
+#         convert = convert[0] + convert[:0:-1]  # 0FEDCBA987654321
+#         if n * (-1) < base:
+#             return "-" + convert[n]
+#         else:
+#             return to_str((n // base) + 1, base) + convert[(n % base)]
 #     else:
-#         return to_str(n // base, base) + convert[n % base]
+#         if n < base:
+#             return convert[n]
+#         else:
+#             return to_str(n // base, base) + convert[(n % base)]
 #
 #
-# print(to_str(255, 16))
+# print(to_str(254, 2))
 
-# print(int('FE', 16))
+# print(hex(-255))
+# print(int('FF', 16))
+
+
+# convert = "0123456789ABCDEF"
+# convert = convert[0] + convert[:0:-1]
+# print(convert)
+
+
+# def negative(a):
+#     if not a:  # len(a) == 0   a == []
+#         return 0
+#     else:
+#         count = negative(a[1:])
+#         if a[0] < 0:
+#             count += 1
+#         return count
+#
+#
+# lst = [-2, 3, 8, -11, -4, 6]
+#
+# print(lst)
+# n = negative(lst)
+# print(n)  # 3
+
+
+# def validate_phone(number):
+#     reg = r"^\+?7\s*\(?\d{3}\)?\s*[\d\s-]{7,9}$"
+#     return re.search(reg, number).group()
+#     # return re.findall(reg, number)[0]
+#
+#
+# print(validate_phone('+7 499 456-45-78'))
+# print(validate_phone('+74994564578'))
+# print(validate_phone('7 (499) 456 45 78'))
+# print(validate_phone('7 (499) 456-45-78'))
+
+
+# names = ["Adam", ["Bob", ["Chet", "Cat", ["aaa"]], "Bard", "Bert"], "Alex", ["Bea", "Bill"], "Ann"]
+#
+#
+# def count_items(item_list):
+#     count = 0
+#     for name in item_list:
+#         if isinstance(name, list):
+#             n = name
+#             # i = 0
+#             while len(n) != 0:
+#                 if isinstance(n[0], list):
+#                     n = n[0]
+#                     # count += len(n)
+#                 else:
+#                     count += 1
+#                 n = n[1:]
+#
+#         else:
+#             count += 1  # 1
+#
+#     print(count)
+#
+#
+# count_items(names)
+# # print(names[0])
+# # print(names[1])
+# # print(isinstance(names[0], list))
+# # print(isinstance(names[1], list))
+# # print(names[1][1][0])
+# # print(isinstance(names[1][1][0], list))
+# # print(len(names))
+# print(names)
+
+
+# def count_items(item_list):
+#     count = 0
+#     for item in item_list:
+#         if isinstance(item, list):
+#             count += count_items(item)
+#         else:
+#             count += 1
+#     return count
+
+
+# print(count_items(names))
+# def count_items(item_list):
+#     count = 0
+#     for name in item_list:
+#         if isinstance(name, str):
+#             count += 1
+#         elif isinstance(name, list):
+#             for n in name:
+#                 if isinstance(n, str):
+#                     count += 1
+#                 elif isinstance(n, list):
+#                     count += len(n)
+#     print(count)
+
+
+# names = ["Adam", ["Bob", ["Chet", "Cat"], "Bard", "Bert"], "Alex", ["Bea", "Bill"], "Ann"]
+# print(names)
+
+
+# def count_items(item_list):
+#     count = 0
+#     stack = []
+#     current_list = item_list
+#     i = 0
+#     while True:
+#         if i == len(current_list):
+#             if current_list == item_list:
+#                 return count
+#             else:
+#                 current_list, i = stack.pop()
+#                 i += 1
+#         if isinstance(current_list[i], list):
+#             stack.append([current_list, i])
+#             current_list = current_list[i]
+#             i = 0
+#         count += 1
+#         i += 1
+#
+#
+# print(count_items(names))
+
+# names = ["Adam", ["Bob", ["Chet", "Cat"], "Bard", "Bert"], "Alex", ["Bea", "Bill"], "Ann"]
+# print(names)
+#
+#
+# def union(s):
+#     if not s:
+#         return s
+#     if isinstance(s[0], list):
+#         return union(s[0]) + union(s[1:])
+#     return s[0:1] + union(s[1:])  # ["Adam"] + ["Adam"], ["Bob", Chet", "Cat"]
+#
+#
+# print(union(names))
+
+# def remove(text):  #
+#     if not text:
+#         return ""
+#     if text[0] == "\t" or text[0] == " " or text[0] == "$":
+#         return remove(text[1:])
+#     else:
+#         return text[0] + remove(text[1:])  # HelloWorld! + ''
+#
+#
+# print(remove(" $Hello\tWorld$! "))
+
+
+# Линейный (последовательный) поиск
+
+# def seq_search(s, item):
+#     pos = 0  #
+#     found = False  #
+#
+#     while pos < len(s) and not found:
+#         if s[pos] == item:
+#             found = True
+#         else:
+#             pos += 1
+#     return found
+#
+#
+# lst = [54, 26, 93, 17, 77, 31, 44, 55, 20, 65]
+# print(seq_search(lst, 93))  # True
+# print(seq_search(lst, 28))  # False
+
+
+# def seq_search(s, item):
+#     pos = 0  # 3
+#     found = False  #
+#     stop = False  # True
+#     while pos < len(s) and not found and not stop:
+#         if s[pos] == item:
+#             found = True
+#         else:
+#             if s[pos] > item:
+#                 stop = True
+#             else:
+#                 pos += 1
+#     return found
+#
+#
+# lst = [54, 26, 93, 17, 77, 31, 44, 55, 20, 65]
+# lst.sort()  # [17, 20, 26, 31, 44, 54, 55, 65, 77, 93]
+# print(lst)
+# print(seq_search(lst, 93))  # True
+# print(seq_search(lst, 28))  # False
+
+# Бинарный поиск
+
+# def binary_search(s, item):
+#     first = 0  # 0
+#     last = len(s) - 1  # 0 - 1 = -1
+#     found = False
+#
+#     while first <= last and not found:
+#         midpoint = (first + last) // 2  # 3 // 2 = 1
+#         if s[midpoint] == item:
+#             found = True
+#         else:
+#             if item < s[midpoint]:
+#                 last = midpoint - 1
+#             else:
+#                 first = midpoint + 1
+#
+#     return found
+#
+#
+# lst = [17, 20, 26, 31, 44, 54, 55, 65, 77, 93]
+# print(binary_search(lst, 26))
+# print(binary_search(lst, 28))
+
+
+# Алгоритмы сортировки
+# "Пузырьковая сортировка"
+from random import randint
+import time
+
+# def bubble(array):
+#     for i in range(len(array) - 1):
+#         for j in range(len(array) - i - 1):
+#             if array[j] > array[j + 1]:
+#                 array[j], array[j + 1] = array[j + 1], array[j]
+#
+#
+# a = [randint(1, 100) for i in range(10000)]
+#
+# # print(a)
+# start = time.monotonic()
+# bubble(a)
+# # print(a)
+# res = time.monotonic() - start
+# print(round(res, 3), "sec")
+
+
+# def binary_search(s, item):
+#     found = False
+#     first = 0
+#     last = len(s) - 1
+#     while first <= last and not found:
+#         midpoint = (first + last) // 2
+#         if s[midpoint] == item:
+#             found = True
+#         else:
+#             if item < s[midpoint]:
+#                 last = midpoint - 1
+#             else:
+#                 first = midpoint + 1
+#
+#     return found
+#
+#
+# a = [randint(1, 100) for i in range(10)]
+# print(a)
+# a.sort()
+# print(a)
+# n = int(input("Введите число: "))
+# if binary_search(a, n):
+#     print(f"Число {n} в списке присутствует")
+# else:
+#     print(f"Число {n} в списке отсутствует")
+
+
+# def merge_sort(a):
+#     n = len(a)
+#     if n < 2:
+#         return a
+#
+#     left = merge_sort(a[:n // 2])
+#     right = merge_sort(a[n // 2:n])
+#
+#     i = j = 0
+#     res = []
+#
+#     while i < len(left) or j < len(right):
+#         if not i < len(left):
+#             res.append(right[j])
+#             j += 1
+#         elif not j < len(right):
+#             res.append(left[i])
+#             i += 1
+#         elif left[i] < right[j]:
+#             res.append(left[i])
+#             i += 1
+#         else:
+#             res.append(right[j])
+#             j += 1
+#     return res
+#
+#
+# array = [randint(1, 100) for i in range(10000)]
+# # print(array)
+# start = time.monotonic()
+# array = merge_sort(array)
+# # print(array)
+# res = time.monotonic() - start
+# print(round(res, 3), "sec")
+
+
+# Сортировка Шелла
+# def shell_sort(s):
+#     gap = len(s)
+#
+#     while gap > 0:
+#         for val in range(gap, len(s)):
+#             cur_val = s[val]
+#             pos = val
+#
+#             while pos >= gap and s[pos - gap] > cur_val:
+#                 s[pos] = s[pos - gap]
+#                 pos -= gap
+#                 s[pos] = cur_val
+#
+#         gap //= 2
+#     return s
+#
+#
+# a = [randint(1, 100) for i in range(10000)]
+# # print(a)
+# start = time.monotonic()
+# shell_sort(a)
+# # print(a)
+# res = time.monotonic() - start
+# print(round(res, 3), "sec")
+
+# def quick_sort(a):
+#     if len(a) > 1:
+#         x = a[(len(a) - 1) // 2]
+#         low = [i for i in a if i < x]
+#         eq = [i for i in a if i == x]
+#         hi = [i for i in a if i > x]
+#         a = quick_sort(low) + eq + quick_sort(hi)
+#     return a
+#
+#
+# lst = [randint(1, 100) for i in range(10000)]
+# # print(lst)
+# start = time.monotonic()
+# # lst = quick_sort(lst)
+# # print(lst)
+# lst.sort()
+# res = time.monotonic() - start
+# print(res, "sec")
+
+# Файлы
+
+# f = open(r'D:\Python212\212\text1.txt')
+# print(f)
+# print(*f)
+# print(f.mode)
+# print(f.name)
+# print(f.encoding)
+# f.close()
+# print(f.closed)
+
+
+# f = open('text1.txt', 'r')
+# print(f.read(3))
+# print(f.read())
+# f.close()
+
+
+# f = open('test.txt', 'r')
+# print(f.readline())
+# print(f.readline(8))
+# print(f.readline())
+# print(f.readline())
+# f.close()
+
+# f = open('test.txt', 'r')
+# print(f.readlines(16))
+# print(f.readlines())
+#
+# f.close()
+
+# f = open('test.txt', 'r')
+# for line in f:
+#     print(line)
+#
+# f.close()
+#
+#
+# fail = open('test.txt')
+# count_lines = len(fail.readlines())
+# print(count_lines)
+
+
+# f = open('xyz.txt', 'w')
+# # f.write('Hello\nWorld\n')
+# # lines = ['This is line 1', 'This is line 2']
+# lines = [str(i ** 5) for i in range(1, 20)]
+# print(lines)
+# # f.writelines(lines)
+# for index in lines:
+#     f.write(index + "\t")
+# f.close()
+
+# f = open("text2.txt", "w")
+# f.write("Замена строки в текстовом файле;\nизменить строку в списке;\nзаписать список в файл;")
+# f.close()
+#
+# f = open("text2.txt", "r")
+# read_f = f.readlines()
+# print(read_f)
+# for i in range(len(read_f)):
+#     if read_f[i] == "изменить строку в списке;\n":
+#         read_f[i] = "Hello World!\n"
+# print(read_f)
+# f.close()
+#
+# f = open("text2.txt", "w")
+# f.writelines(read_f)
+# f.close()
+
+# f = open("text1.txt", "r")
+# print(f.read(3))
+# print(f.tell())
+# print(f.seek(1))
+# print(f.read())
+# print(f.tell())
+# f.close()
+
+# f = open("text1.txt", "r+")
+# print(f.write("I am learning Python"))
+# print(f.seek(3))
+# print(f.write("-new string-"))
+# print(f.tell())
+# f.close()
+
+
+# with open('text3.txt', 'w+') as f:
+#     print(f.write('0123456789\n123456789'))
+#
+#
+# with open('text3.txt', 'r') as f:
+#     for line in f:
+#         print(line[:6])
+
+
+# file_name = "res_1.txt"
+# lst = [4.5, 2.8, 1.0, 0.3, 4.33, 7.777]
+#
+#
+# def get_line(lt):
+#     lt = list(map(str, lt))
+#     print(lt)
+#     return '\t'.join(lt)
+#
+#
+# with open(file_name, 'w') as f:
+#     f.write(get_line(lst))
+#
+# print("Done!")
+
+# file_name = "res_1.txt"
+#
+# numbers = [4.5, 2.8, 3.9, 1.0, 0.3, 4.33, 7.777]
+#
+#
+# def get_string(l: list) -> str:
+#     return '\t'.join(map(str, l))
+#
+#
+# with open(file_name, 'r+', encoding='utf-8') as file:
+#     # text = get_string(numbers)
+#     # file.write(text)
+#     nums = file.read()
+#     print(nums)
+#     nums_list = list(map(float, nums.split('\t')))
+#     print(nums_list)
+#     print(len(nums_list))
+#     print(sum(nums_list))
+
+# def longest_world(file):
+#     with open(file, 'r') as text:
+#         w = text.read().split()
+#         max_length = len(max(w, key=len))
+#         res = [word for word in w if len(word) == max_length]
+#         if len(res) == 1:
+#             return res[0]
+#         return res
+#
+#
+# file_name = "res_1.txt"
+# print(longest_world(file_name))
+
+
+# text = "Строка №1\nСтрока №2\nСтрока №3\nСтрока №4\nСтрока №5\nСтрока №6\nСтрока №7\nСтрока №8\nСтрока №9\nСтрока №10\n"
+#
+# with open('one.txt', 'w') as f:
+#     f.write(text)
+
+
+# read_file = 'one.txt'
+# write_file = 'two.txt'
+# with open(read_file, 'r') as fr, open(write_file, 'w') as fw:
+#     for line in fr:
+#         line = line.replace("Строка", "Линия - ")
+#         fw.write(line)
+
+
+# Модуль OS (OS.PATH)
+
+import os
+import time
+
+# import os.path
+
+# print(os.getcwd())  # возвращает путь к текущей директории
+# print(os.listdir())  # возвращает список папок и файлов, находящихся в текущей директории
+# print(os.listdir("../.."))  #
+
+# os.mkdir("folder")  # создает директорию по указанному пути
+# os.makedirs("nested1/nested2/nested3")  # создает не только конечную директорию, но и промежуточные папки
+
+# os.remove("xyz.txt")  # удаление файла
+
+# os.rename("nested1", "test")  # переименование папок и файлов
+
+# os.rename("text.txt", "test/text1.txt")  # все промежуточные директории должны существовать обязательно
+# os.renames("text1.txt", "text/text.txt")  # создаются промежуточные директории
+
+# os.rmdir("folder")  # удаление пустой директории
+
+
+# for root, dirs, files in os.walk("test", topdown=False):  # topdown=True - сверху вниз, topdown=False - снизу вверх
+#     print("Root:", root)
+#     print("Sub_dirs:", dirs)
+#     print("Files:", files)
+
+# def remove_empty_dirs(root_tree):
+#     print(f"Удаление пустых директорий в ветви {root_tree}")
+#     print("-" * 50)
+#     for root, dirs, files in os.walk(root_tree):
+#         if not os.listdir(root):
+#             os.rmdir(root)
+#             print(f"Директория {root} удалена.")
+#     print("-" * 50)
+#
+#
+# remove_empty_dirs("test")
+
+# os.path
+
+# print(os.path.split(r'D:\Python212\212\test\nested2\nested3\xyz.txt')[1])  # разбивает путь на кортеж (head, tail)
+# print(os.path.dirname(r'D:\Python212\212\test\nested2\nested3\xyz.txt'))  # имя директории
+# print(os.path.basename(r'D:\Python212\212\test\nested2\nested3\xyz.txt'))  # имя файла
+
+# print(os.path.join(r'D:\Python212', '212', 'test', 'xyz.txt'))  # соединяет один или несколько компонентов пути с учетом особенностей OS
+
+# dirs = [r'Work\F1', r'Work\F2\F21']
+# for d in dirs:
+#     os.makedirs(d)
+
+# files = {
+#     'Work': ['w.txt'],
+#     r'Work\F1': ['f11.txt', 'f12.txt', 'f13.txt'],
+#     r'Work\F2\F21': ['f211.txt', 'f212.txt']
+# }
+#
+# for d, file in files.items():
+#     for f in file:
+#         file_path = os.path.join(d, f)
+#         # print(file_path)
+#         open(file_path, 'w').close()
+#
+# file_with_text = [r'Work\w.txt', r'Work\F1\f12.txt', r'Work\F2\F21\f211.txt', r'Work\F2\F21\f212.txt']
+#
+# for file in file_with_text:
+#     with open(file, 'w') as f:
+#         f.write(f"some sample text for {file} file")
+#
+#
+# def print_tree(root, topdown):
+#     print(f"Обход {root} {'сверху вниз' if topdown else 'снизу вверх'}")
+#     for root, dirs, fl in os.walk(root, topdown=topdown):
+#         print(root)
+#         print(dirs)
+#         print(fl)
+#     print('-' * 50)
+#
+#
+# print_tree('Work', topdown=False)
+# print_tree('Work', True)
+
+
+# print(os.path.exists(r'D:\Python212\212\test\nested2\nested3\xyz1.txt'))  # возвращает True, если путь указывает на
+# существующий путь в файловой системе
+
+# path = r'D:\Python212\212\venv\Scripts\python.exe'
+# k_size = os.path.getsize(path)  # размер файла
+# print(k_size // 1024)
+# print(os.path.getmtime(path))  # время последнего изменения файла
+# print(os.path.getatime(path))  # время последнего доступа к файлу
+# t = os.path.getctime(path)  # время создания файла
+# print(time.strftime("%d.%m.%Y, %H:%M:%S", time.localtime(t)))
+
+
+# file_path = r'test\nested2'
+#
+# if os.path.exists(file_path):
+#     dirs, name = os.path.split(file_path)
+#     atime = os.path.getmtime(file_path)
+#     print(f"{name} ({dirs}) - last access time {time.strftime('%d.%m.%Y, %H:%M:%S', time.localtime(atime))}")
+# else:
+#     print(f"File {file_path} does not exist!")
+
+# print(os.path.isfile(file_path))  # возвращает True, если указанный путь является файлом
+# print(os.path.isdir(file_path))  # возвращает True, если указанный путь является директорией
+
+
+# dir_name = r'test\nested2'
+#
+# obj = os.listdir(dir_name)
+# print(obj)
+#
+# for i in obj:
+#     p = os.path.join(dir_name, i)
+#     # print(p)
+#     if os.path.isfile(p):
+#         print(f'{i} - file - {os.path.getsize(p)} bytes')
+#     elif os.path.isdir(p):
+#         print(f'{i} - dir')
+
+# OOП (объектно-ориентированное программирование)
+
+# class Point:
+#     """Класс для предоставления координат точек на плоскости"""
+#     x = 1
+#     y = 1
+#
+#
+# print(dir(Point))
+# print(Point.__doc__)
+# class Point3D:
+#     pass
+#
+#
+# class Point:
+#     x = 1
+#     y = 1  # 100
+#
+#
+# p1 = Point()
+# p1.x = 410
+# p1.y = 200
+# Point.y = 100
+# print(p1.x, p1.y)
+# print(p1.__dict__)
+# print(Point.__dict__)
+# print(type(p1))
+# print(isinstance(p1, Point3D))
+
+
+# p2 = Point()
+# print(p2.x, p2.y)
+#
+# print(id(Point))
+# print(id(p1))
+# print(id(p2))
+
+
+# class Point:
+#     x = 1
+#     y = 1
+#
+#     def set_coord(self, x, y):
+#         self.x = x
+#         self.y = y
+#         print(self.__dict__)
+#
+#
+# p1 = Point()
+# # p1.x = 5
+# # p1.y = 10
+#
+# p1.set_coord(5, 10)
+# Point.set_coord(p1, 8, 12)
+# # print(p1.__dict__)
+#
+# p2 = Point()
+# # p2.x = 20
+# # p2.y = 30
+# p2.set_coord(20, 30)
+# print(p2.__dict__)
+
+# class Human:
+#     name = "name"
+#     birthday = "00.00.0000"
+#     phone = '00-00-00'
+#     country = "country"
+#     city = "city"
+#     address = 'street, house'
+#
+#     def print_info(self):
+#         print(" Персональные данные ".center(40, "*"))
+#         print(f"Имя: {self.name}\nДата рождения: {self.birthday}\n"
+#               f"Номер телефона: {self.phone}\nСтрана: {self.country}\n"
+#               f"Город: {self.city}\nДомашний адрес: {self.address}")
+#         print("=" * 40)
+#
+#     def input_info(self, first_name, birthday, phone, country, city, address):
+#         self.name = first_name
+#         self.birthday = birthday
+#         self.phone = phone
+#         self.city = city
+#         self.country = country
+#         self.address = address
+#
+#     def set_name(self, name):
+#         self.name = name
+#
+#     def get_name(self):
+#         return self.name
+#
+#
+# h1 = Human()
+# h1.print_info()
+# h1.input_info("Юля", "23.05.1986", "45-46-98", "Россия", "Москва", "Чистопрудный бульвар, 1А")
+# h1.print_info()
+# h1.set_name("Анна")
+# print(h1.get_name())
+
+
+# class Person:
+#     skill = 10
+#
+#     # name = ""
+#     # surname = ""
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+#         print(f"Инициализатор {self.name} {self.surname}")
+#
+#     def __del__(self):
+#         print("Удаление экземпляра\n\n")
+#
+#     def print_info(self):
+#         print("Данные о сотруднике:", self.name, self.surname)
+#
+#     def add_skill(self, k):
+#         self.skill += k
+#         print(f"Квалификация сотрудника: {self.name}", self.skill, "\n")
+#
+#
+# p1 = Person("Viktor", "Reznik")
+# p1.print_info()
+# p1.add_skill(3)
+# del p1
+#
+# p2 = Person("Anna", "Dolgih")
+# p2.print_info()
+# p2.add_skill(2)
+
+
+# class Point:
+#     count = 0  # 3
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#         Point.count += 1
+#
+#
+# p1 = Point(5, 10)
+# print(p1.count)
+# print("count =", Point.count)
+# p2 = Point(15, 20)
+# print(p2.count)
+# print("count =", Point.count)
+# p3 = Point(23, 39)
+# print(p3.count)
+# print("count =", Point.count)
+# print(p1.count)
+
+
+# class Robot:
+#     k = 0
+#
+#     def __init__(self, name):
+#         self.name = name
+#         print(f"Инициализация {self.name}")
+#         Robot.k += 1
+#
+#     def __del__(self):
+#         print(self.name, "выключается!")
+#         Robot.k -= 1
+#         if Robot.k == 0:
+#             print(self.name, "был последним")
+#         else:
+#             print("Работающих роботов осталось:", Robot.k)
+#
+#     def say_hi(self):
+#         print("Приветствую! Меня зовут:", self.name)
+#
+#
+# droid1 = Robot('R2-D2')
+# droid1.say_hi()
+# Robot.say_hi(droid1)
+# print("Численность роботов:", Robot.k)
+#
+# droid2 = Robot('C-3PO')
+# droid2.say_hi()
+# print("Численность роботов:", Robot.k)
+#
+# print()
+# del droid1
+# del droid2
+# print("Численность роботов:", Robot.k)
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = self.__y = 0
+#         if Point.__check_value(x) and Point.__check_value(y):
+#             self.__x = x
+#             self.__y = y
+#
+#     def __check_value(z):
+#         if isinstance(z, int) or isinstance(z, float):
+#             return True
+#         return False
+#
+#     def set_coord(self, x, y):  # установить координаты
+#         if Point.__check_value(x) and Point.__check_value(y):
+#             self.__x = x
+#             self.__y = y
+#         else:
+#             print("Координаты должны быть числами")
+#
+#     def get_coord(self):  # получить координаты
+#         return self.__x, self.__y
+#
+#     def set_x(self, x):
+#         if Point.__check_value(x):
+#             self.__x = x
+#         else:
+#             print(f"Координата X должны быть числом")
+#
+#     def get_x(self):
+#         return self.__x
+#
+#     def set_y(self, y):
+#         if Point.__check_value(y):
+#             self.__y = y
+#         else:
+#             print(f"Координата Y должны быть числом")
+#
+#     def get_y(self):
+#         return self.__y
+#
+#
+# p1 = Point(5, 10)
+# # print(p1.get_coord())
+# # p1.set_coord(1.5, 7)
+# # # p1.__x = 100
+# # print(p1.get_coord())
+# # print(p1.__x)
+# # p1.y = 'abc'
+# # print(p1.x, p1.y)
+# # p1.set_x(8)
+# # p1.set_y(16)
+# # print(p1.get_x())
+# # print(p1.get_y())
+# print(p1.__dict__)
+# print(p1._Point__x)
+# p1._Point__x = 111
+# print(p1.__dict__)
+
+
+# class Point:
+#     __slots__ = ["__x", "__y", "z"]
+#
+#     def __init__(self, x, y):
+#         self.__x = self.__y = 0
+#         if Point.__check_value(x) and Point.__check_value(y):
+#             self.__x = x
+#             self.__y = y
+#
+#     def __check_value(z):
+#         if isinstance(z, int) or isinstance(z, float):
+#             return True
+#         return False
+#
+#     def set_coord(self, x, y):  # установить координаты
+#         if Point.__check_value(x) and Point.__check_value(y):
+#             self.__x = x
+#             self.__y = y
+#         else:
+#             print("Координаты должны быть числами")
+#
+#     def get_coord(self):  # получить координаты
+#         return self.__x, self.__y
+#
+#     def set_x(self, x):
+#         if Point.__check_value(x):
+#             self.__x = x
+#         else:
+#             print(f"Координата X должны быть числом")
+#
+#     def get_x(self):
+#         return self.__x
+#
+#     def set_y(self, y):
+#         if Point.__check_value(y):
+#             self.__y = y
+#         else:
+#             print(f"Координата Y должны быть числом")
+#
+#     def get_y(self):
+#         return self.__y
+#
+#
+# p1 = Point(5, 10)
+# p1.z = 1
+# print(p1.z)
+
+
+# print(p1.__dict__)
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __get_x(self):
+#         print("Вызов __get")
+#         return self.__x
+#
+#     def __set_x(self, x):
+#         print("Вызов __set")
+#         self.__x = x
+#
+#     def __del_x(self):
+#         print("Удаление свойства")
+#         del self.__x
+#
+#     # x = property(__get_x, __set_x, __del_x)
+#
+#
+# p1 = Point(5, 10)
+# p1.x = 100
+# print(p1.x)
+# del p1.x
+# print(p1.__dict__)
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     @property
+#     def x(self):
+#         print("Вызов __get")
+#         return self.__x
+#
+#     @x.setter
+#     def x(self, x):
+#         print("Вызов __set")
+#         self.__x = x
+#
+#     @x.deleter
+#     def x(self):
+#         print("Удаление свойства")
+#         del self.__x
+#
+#     # x = property(__get_x, __set_x, __del_x)
+#
+#
+# p1 = Point(5, 10)
+# p1.x = 100
+# print(p1.x)
+# del p1.x
+# print(p1.__dict__)
+
+
+# class KgToPounds:
+#     def __init__(self, kg):
+#         self.__kg = kg
+#
+#     @property
+#     def kg(self):
+#         return self.__kg
+#
+#     @kg.setter
+#     def kg(self, new_kg):
+#         if isinstance(new_kg, (int, float)):
+#             self.__kg = new_kg
+#         else:
+#             print('Килограммы задаются только числами')
+#
+#     def to_pounds(self):
+#         return self.__kg * 2.205
+#
+#
+# weight = KgToPounds(12)
+# print(weight.kg, "кг => ", end="")
+# print(weight.to_pounds(), "фунтов")
+# weight.kg = 41
+# print(weight.kg, "кг => ", end="")
+# print(weight.to_pounds(), "фунтов")
+# weight.kg = "abc"
+# print(weight.kg, "кг => ", end="")
+# print(weight.to_pounds(), "фунтов")
+
+# class Person:
+#     def __init__(self, name, old):
+#         self.__name = name
+#         self.__old = old
+#
+#     @property
+#     def name(self):
+#         return self.__name
+#
+#     @name.setter
+#     def name(self, new_name):
+#         self.__name = new_name
+#
+#     @name.deleter
+#     def name(self):
+#         del self.__name
+#
+#     @property
+#     def old(self):
+#         return self.__old
+#
+#     @old.setter
+#     def old(self, new_old):
+#         self.__old = new_old
+#
+#     @old.deleter
+#     def old(self):
+#         del self.__old
+#
+#
+# p1 = Person("Irina", 26)
+# print(p1.__dict__)
+# p1.name = "Igor"
+# print(p1.name)
+# p1.old = 31
+# print(p1.old)
+# del p1.name
+# print(p1.__dict__)
+
+
+# class Point:
+#     __count = 0
+#
+#     def __init__(self, x=0, y=0):
+#         self.__x = x
+#         self.__y = y
+#         Point.__count += 1
+#
+#     @staticmethod
+#     def get_count():
+#         return Point.__count
+#
+#     # get_count = staticmethod(get_count)
+#
+#
+# p1 = Point()
+# p2 = Point()
+# p3 = Point()
+# print(p1.__dict__)
+# print(Point.get_count())
+# print(p2.get_count())
+
+
+# class Change:
+#     @staticmethod
+#     def inc(x):
+#         return x + 1
+#
+#     @staticmethod
+#     def dec(x):
+#         return x - 1
+#
+#
+# print(Change.inc(10), Change.dec(10))
+
+# import math
+#
+#
+# class Area:
+#     count = 0  # 5
+#
+#     @staticmethod
+#     def triangle_area(a, b, c):
+#         p = (a + b + c) / 2
+#         Area.count += 1
+#         return math.sqrt(p * (p - a) * (p - b) * (p - c))
+#
+#     @staticmethod
+#     def triangle_area2(a, h):
+#         Area.count += 1
+#         return 0.5 * a * h
+#
+#     @staticmethod
+#     def square_area(a):
+#         Area.count += 1
+#         return a ** 2
+#
+#     @staticmethod
+#     def rect_area(a, b):
+#         Area.count += 1
+#         return a * b
+#
+#     @staticmethod
+#     def get_count():
+#         return Area.count
+#
+#
+# print(f"Площадь треугольника по формуле Герона:", Area.triangle_area(3, 4, 5))
+# print(f"Площадь треугольника через основание и высоту:", Area.triangle_area2(6, 7))
+# print(f"Площадь квадрата:", Area.square_area(7))
+# print(f"Площадь квадрата:", Area.square_area(9))
+# print(f"Площадь прямоугольника:", Area.rect_area(2, 6))
+# print(f"Количество подсчетов площади: {Area.get_count()}")
