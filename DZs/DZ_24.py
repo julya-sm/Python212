@@ -25,7 +25,7 @@ class Sphere:
             print('Радиус должен быть положительным числом')
 
     def set_center(self, cx, cy, cz):
-        if isinstance((cx, cy, cz), (int, float)):
+        if isinstance(cx, (int, float)) and isinstance(cy, (int, float)) and isinstance(cx, (int, float)):
             self.__cx = cx
             self.__cy = cy
             self.__cz = cz
@@ -52,7 +52,10 @@ print('get_volume:', sp1.get_volume())
 print('get_area:', sp1.get_area())
 print('get_center:', sp1.get_center())
 print('is_point_inside(0, -1.5, 0):', sp1.is_point_inside(0, -1.5, 0))
+sp1.set_center(0, 0, 1)
+print('get_center2:', sp1.get_center())
 print()
 sp1.r = 1.6
 print('radius:', sp1.r)
+print(sp1.__dict__)
 print('is_point_inside(0, -1.5, 0):', sp1.is_point_inside(0, -1.5, 0))
