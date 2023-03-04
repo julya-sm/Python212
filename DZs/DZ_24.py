@@ -7,10 +7,10 @@ import math
 
 
 class Sphere:
-    def __init__(self, r, cx, cy, cz):
-        self.__cx = 0
-        self.__cy = 0
-        self.__cz = 0
+    def __init__(self, r, cx = 0, cy = 0, cz = 0):
+        self.__cx = cx
+        self.__cy = cy
+        self.__cz = cz
         self.__r = r
 
     @property
@@ -46,7 +46,7 @@ class Sphere:
         return ab <= self.__r
 
 
-sp1 = Sphere(0.6, 0, 0, '0')
+sp1 = Sphere(0.6, 0, 0, 0)  # можно только радиус указать
 print('radius:', sp1.r)
 print('get_volume:', sp1.get_volume())
 print('get_area:', sp1.get_area())
