@@ -4220,3 +4220,22 @@ import time
 # print(f"Площадь квадрата:", Area.square_area(9))
 # print(f"Площадь прямоугольника:", Area.rect_area(2, 6))
 # print(f"Количество подсчетов площади: {Area.get_count()}")
+
+
+# ==================================
+
+# Создание модулей
+
+from car import electrocar
+
+
+def run():
+    car1 = electrocar.ElectroCar('Tesla', 'T', 2018, 99000)
+    car1.show_car()
+    car1.description_battery()
+
+
+if __name__ == '__main__':
+    run()
+
+
