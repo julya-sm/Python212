@@ -4226,16 +4226,17 @@ import time
 
 # Создание модулей
 
-from car import electrocar
+# from car import electrocar
+#
+#
+# def run():
+#     car1 = electrocar.ElectroCar('Tesla', 'T', 2018, 99000)
+#     car1.show_car()
+#     car1.description_battery()
+# 
+#
+# if __name__ == '__main__':
+#     run()
 
-
-def run():
-    car1 = electrocar.ElectroCar('Tesla', 'T', 2018, 99000)
-    car1.show_car()
-    car1.description_battery()
-
-
-if __name__ == '__main__':
-    run()
 
 
