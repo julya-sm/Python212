@@ -4238,5 +4238,11 @@ import time
 # if __name__ == '__main__':
 #     run()
 
+# ================= Парсинг данных с сайта =============================
 
+# Для парсинга файлов HTML/XML нужно установить модуль BeautifulSoup:
+# a) pip install beautifulsoup4 (или bs4)
+# b) установка средствами пайчарма
+
+from bs4 import BeautifulSoup
 
