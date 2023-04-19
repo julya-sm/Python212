@@ -24,7 +24,6 @@ def get_html(url):
 
 def get_data(html):
     soup = BeautifulSoup(html, 'lxml')
-    p1 = soup.find_all('div', id='items_block')
     p1 = soup.find_all('div', class_='items')
     for pp in p1:
         books = pp.find_all('div', class_='item_block new')
