@@ -4244,5 +4244,16 @@ import time
 # a) pip install beautifulsoup4 (или bs4)
 # b) установка средствами пайчарма
 
-from bs4 import BeautifulSoup
+# from bs4 import BeautifulSoup
 
+
+from parse import Parser
+
+
+def main():
+    pars = Parser('https://www.ixbt.com/live/index/news/', 'news.txt')
+    pars.run()
+
+
+if __name__ == '__main__':
+    main()
