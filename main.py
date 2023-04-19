@@ -4247,12 +4247,24 @@ import time
 # from bs4 import BeautifulSoup
 
 
-from parse import Parser
+# from parse import Parser
+#
+#
+# def main():
+#     pars = Parser('https://www.ixbt.com/live/index/news/', 'news.txt')
+#     pars.run()
+#
+#
+# if __name__ == '__main__':
+#     main()
+
+from DZ_35 import Parser
 
 
 def main():
-    pars = Parser('https://www.ixbt.com/live/index/news/', 'news.txt')
-    pars.run()
+    for i in range(1, 3):
+        pars = Parser(f'https://www.it-world.ru/articles/?PAGEN_1={i}&IBLOCK_CODE=articles', 'ITworld.txt')
+        pars.run()
 
 
 if __name__ == '__main__':

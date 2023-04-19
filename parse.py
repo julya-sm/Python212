@@ -26,6 +26,7 @@ class Parser:
                 'href': href,
                 'author': author
             })
+            print(type(item))
 
     def save(self):
         with open(self.path, 'w', encoding='utf-8-sig') as f:
