@@ -1,0 +1,134 @@
+ID - код по магазину
+Produce - название продукта
+Material – материал
+Color – цвет
+Size – размер
+Country -  страна производитель
+ID_salespeople - код поставщика товара
+Price - цена за штуку
+Count - количество штук
+REM - ремарки
+--------------------------------
+2. Определить все товары, которые производятся в Украине (марка, код товара. страна) - Как я поняла, 
+марка товара записана в поле REM
+
+SELECT REM, Produce, Country
+FROM Ware
+WHERE Country = 'Украина';
+
+3. Удалите из таблицы все товары, которые произведены в Германии
+DELETE FROM Ware
+WHERE Country = 'Германия';
+
+4. Замените страну-производителя Польшу на Россию (код, товар, страна, описание товара). - Не поняла условие в скобках, если менять и остальные поля, то непонятно, на что
+UPDATE Ware
+SET Country='Россия'
+WHERE Country='Польша';
+
+
+5. Восстановите строки, удаленные в 3 пункте.
+INSERT INTO Ware
+VALUES
+(1001, 'CKN-002', 'кожзам', 'ч', '39x30x6,4', 'Германия', 2001, 143, 2,	'Notebrief (13,2")'),
+(1017, 'PON-303BK', 'полиэстер', 'ч', '44,5х33,7х5,1', 'Германия', 2015, 110, 29, 'Large Expandable computer brief (17")'),
+(1026, '(F8E157eaLRG)', 'полиэстер/нейлон', 'ч', '38,1x28x70', 'Германия', 2014, 126, 0, 'Stone Street Case (15)'),
+(1036, 'CN01', 'полиэстер', 'ч', '39x30x5', 'Германия', 2011, 435, 29, 'Computer Case (15/15,4")'),
+(1049, 'KCB-03BKP', 'кожзам', 'ч', '40x30x8,5', 'Германия', 2001, 325, 14, 'System Case (15")'),
+(1254, 'CC06', 'нейлон', 'ч', '38x29x7', 'Германия', 2011, 110, 6, 'Nylon Computer Case (15'')');
+
+6.  Выведите весь товар, который не черного цвета (продукт, цену, код продукта)
+SELECT REM, Price, Produce
+FROM Ware
+WHERE Color != 'ч'
+
+7. Вставьте строку  NTC-117BK Micro Camera Case, нейлон, ч, 13,3x8,3x5,7, 2016, Украина, 1046
+
+INSERT INTO Ware (Produce, REM, Material, Color, Size, ID_salespeople, Country, ID)
+VALUES ('NTC-117BK', 'Micro Camera Case', 'нейлон', 'ч', '13,3x8,3x5,7', 2016, 'Украина', 1046);
+
+8. Вставьте строку POC-463BK	Compact Camera Case, полиэстер, ч, 11x7x4,5, остальные данные не определены.
+INSERT INTO Ware (Produce, REM, Material, Color, Size)
+VALUES ('POC-463BK', 'Compact Camera Case', 'полиэстер', 'ч', '11x7x4,5')
+
+Выдает ошибку [23:50:21] Error while executing SQL query on database 'db_4': NOT NULL constraint failed: Ware.ID
+Поэтому добавила ID = 1255:
+INSERT INTO Ware (Produce, REM, Material, Color, Size, ID)
+VALUES ('POC-463BK', 'Compact Camera Case', 'полиэстер', 'ч', '11x7x4,5', 1255)
+
+9. Вывести весь товар, который поставляет продавец с кодом 2065 из России
+SELECT REM, Produce, ID_salespeople, Country
+FROM Ware
+WHERE ID_salespeople = 2065 AND Country = 'Россия';
+
+10. Вывести товар, цена за который находится в диапазоне от 200 до 345
+SELECT REM, Produce, Price
+FROM Ware
+WHERE Price BETWEEN 200 AND 345
+ORDER BY Price;
+
+11. Определите все сумки из кожи с размером не менее 40х30х5
+SELECT REM, Produce, Size, Material
+FROM Ware
+WHERE Material = 'кожа'  AND Size >= '40х30х5';
+
+PS Не уверена, что правильно - выбирает размер 41х, и не выбирает, к примеру 40x30x8,5
+Может тип nvarchar нужно сравнивать иначе как-то
+ 
+12. Написать запрос, который выводит все сумки и коды их поставщиков, если товара меньше чем на 1200 грн.
+SELECT REM, Produce, ID_salespeople
+FROM Ware
+WHERE Price*Count < 1200;
+
+13. Написать запрос, который заменит код поставщика на 2000, если на складе хранится товара менее чем на 500 грн. По данному поставщику.
+UPDATE Ware
+SET ID_salespeople=2000
+WHERE Price*Count < 500;
+
+14. Вывести все кожаные сумки, количество которых менее 5 шт. и общая сумма товара не превышает 450 грн. 
+SELECT REM, Produce, Material, Price, Count
+FROM Ware
+WHERE Material = 'кожа' AND Price*Count <= 450 AND Count < 5;
+
+15. Напишите запрос, который выведет все нейлоновые сумки цена на которые не превышает 250 грн.
+SELECT REM, Produce, Material, Price
+FROM Ware
+WHERE Material = 'нейлон' AND Price < 250;
+
+16. Замените материал нейлон на брезент, если сумка стоит менее 200 грн. 
+UPDATE Ware
+SET Material='брезент'
+WHERE Material = 'нейлон' AND Price < 200;
+
+17. Напишите запрос, который выводит все сумки, у которых есть косметички
+SELECT REM, Produce
+FROM Ware
+WHERE REM LIKE '%косметичка';
+
+18. Напишите запрос, который покажет все кожаные сумки черного цвета китайского производства.
+SELECT REM, Produce, Color, Material, Country
+FROM Ware
+WHERE Material = 'кожа'  AND Color = 'ч' AND Country = 'Китай';
+
+19. Напишите запрос, который покажет все сумки с размером более 15 дюймов.
+SELECT REM, Produce, Size
+FROM Ware
+WHERE Size > '38';
+
+PS 15 дюймов - приблизительно 38 см
+
+20. Напишите запрос, который покажет всех поставщиков сумок не черного цвета.
+SELECT DISTINCT ID_salespeople
+FROM Ware
+WHERE Color != 'ч';
+
+
+21. Замените материал полиэстер у сумок китайского производства на нейлон
+UPDATE Ware
+SET Material='нейлон'
+WHERE Material = 'полиэстер' AND Country = 'Китай';
+
+
+22. В записях с кодом товара: 1015, 1041, 1032, 1010 материал нейлон заменить на полиэстер если страна-производитель Китай.
+UPDATE Ware
+SET Material='полиэстер'
+WHERE Material='нейлон' AND ID IN (1015, 1041, 1032, 1010) AND Country = 'Китай';
