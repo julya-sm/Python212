@@ -159,4 +159,3 @@ if __name__ == '__main__':
 
     # for it in session.query(Student).filter(text("age Like '2%'")).order_by(text("surname, id desc")):
     #     print(it)
-
