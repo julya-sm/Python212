@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ super() }}
+
+<hr>
+<h2>Список товаров</h2>
+<ul>
+    {% for ar in articles %}
+    <p class ="title"><a href="{{ url_for('show_article', alias=ar.url) }}">{{ ar.name }}. Цена: {{ar.price}}</a></p>
+        <div class="anonce">{{ ar.art[:240]|striptags }}</div>
+    {% endfor %}
+
+</ul>
+
+{% endblock %}
