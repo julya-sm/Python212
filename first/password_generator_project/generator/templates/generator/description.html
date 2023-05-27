@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Генератор паролей</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Как создать пароль</h1>
+            <ol>
+                <li> В выпадающем списке на главной странице выберите длину пароля</li>
+                <li> Отметьте галочкой то, что вы хотите включить в пароль наряду со строчными латинскими буквами</li>
+                <li> Нажмите кнопку «Сгенерировать пароль»</li>
+            </ol>
+        <p><a href="{% url 'home' %}">Перейти на главную</a></p>
+
+    </div>
+</body>
+</html>

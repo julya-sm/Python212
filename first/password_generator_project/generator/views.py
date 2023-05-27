@@ -20,4 +20,10 @@ def password(request):
     psw = ''
     for i in range(length):
         psw += random.choice(char)
-    return render(request, 'generator/password.html', {'password': psw})
+    return render(request, 'generator/password.html',
+                  {'password': psw})
+
+
+def description(request):
+    return render(request, 'generator/description.html')
+

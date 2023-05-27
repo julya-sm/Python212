@@ -9,9 +9,14 @@ body{
 .container h1{
     text-align: center;
 }
-.container form, .container h2{
+.container form, .container h2, .container ol{
     background: greenyellow;
     padding: 20px;
     box-sizing: border-box;
     border-radius: 6px;
 }
+
+ol {
+    list-style-position: inside;
+}
+
