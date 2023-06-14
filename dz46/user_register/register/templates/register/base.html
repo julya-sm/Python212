@@ -13,6 +13,8 @@
     <div class="wrap">
         <ul>
             <li class="logo">Пользователь: {{ user.username }}</li>
+            <li><a href="{% url 'clubadmin' %}">Создать</a></li>
+            <li><a href="{% url 'clublist' %}">Каталог</a></li>
             <li><a href="{% url 'actual_discount' %}">Актуальные</a></li>
             <li>
                 <form action="{% url 'logout_user' %}" method="post">

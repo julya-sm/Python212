@@ -1,0 +1,16 @@
+{% extends 'register/base.html' %}
+
+{% block content %}
+
+<h1>Товары в наличии:</h1>
+
+<ul>
+    {% for item in items%}
+    <li>
+        <p>{{ item }}</p>
+    </li>
+
+    {% endfor %}
+</ul>
+
+{% endblock content %}

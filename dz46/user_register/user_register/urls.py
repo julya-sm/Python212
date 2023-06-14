@@ -29,5 +29,6 @@ urlpatterns = [
     # discounts
     path('', views.home, name='home'),
     path('discount/', views.actual_discount, name='actual_discount'),
-
+    path('clubadmin/', views.clubadmin, name='clubadmin'),
+    path('clublist/', views.clublist, name='clublist'),
 ]

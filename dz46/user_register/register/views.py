@@ -3,6 +3,9 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
+from .forms import RegisterForm
+from .models import Register
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -27,14 +30,17 @@ def sign_up_user(request):
                           {'form': UserCreationForm(), 'error': 'Пароли не совпадают'})
 
 
+@login_required
 def actual_discount(request):
     return render(request, 'register/actual_discount.html')
 
 
+@login_required
 def logout_user(request):
     if request.method == 'POST':
         logout(request)
         return redirect('home')
+
 
 def login_user(request):
     if request.method == 'GET':
@@ -48,3 +54,26 @@ def login_user(request):
             login(request, user)
             return redirect('actual_discount')
 
+
+@login_required
+def clubadmin(request):
+    if request.method == 'GET':
+        return render(request, 'register/clubadmin.html', {'form': RegisterForm()})
+    else:
+        try:
+            form = RegisterForm(request.POST)
+            new_item = form.save(commit=False)
+            new_item.user = request.user
+            new_item.save()
+            return redirect('clubadmin')
+        except ValueError:
+            return render(request, 'register/clubadmin.html',
+                          {'form': RegisterForm(),
+                           'error': 'Переданы неверные данные. Попробуйте еще раз'
+                           })
+
+
+@login_required
+def clublist(request):
+    items = Register.objects.all()
+    return render(request, 'register/clublist.html', {'items': items})
